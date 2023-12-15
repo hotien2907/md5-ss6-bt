@@ -24,6 +24,7 @@ public class Product {
 
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @Transient
     private List<OrderDetail> orderDetails = new ArrayList<>();
 
     @ManyToOne

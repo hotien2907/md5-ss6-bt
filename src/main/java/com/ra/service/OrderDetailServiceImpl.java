@@ -1,5 +1,4 @@
 package com.ra.service;
-
 import com.ra.dto.responseDto.ResponseOrderDetail;
 import com.ra.entity.OrderDetail;
 import com.ra.exception.CustomException;
@@ -8,7 +7,6 @@ import com.ra.repository.IOrderRepository;
 import com.ra.repository.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,10 +19,9 @@ public class OrderDetailServiceImpl implements IOrderDetailService {
     IOrderRepository orderRepository;
     @Autowired
     IProductRepository productRepository;
-
     @Override
     public List<ResponseOrderDetail> findAllByOrderId(Integer orderId) throws CustomException {
-        List<OrderDetail> orderDetails = orderDetailRepository.findOrderDetailBy_OrderId(orderId);
+        List<OrderDetail> orderDetails = orderDetailRepository.findOrderDetailByOrderId(orderId);
         if (orderDetails != null && !orderDetails.isEmpty()) {
             return orderDetails.stream()
                     .map(orderDetail -> ResponseOrderDetail.builder()
@@ -35,7 +32,7 @@ public class OrderDetailServiceImpl implements IOrderDetailService {
                             .userName(orderDetail.getOrders().getUser().getUser_name())
                             .product(orderDetail.getProduct())
                             .build())
-                    .collect(Collectors.toList());
+                            .collect(Collectors.toList());
         }
         throw new CustomException("Khong ton don hang chi tiet");
     }
