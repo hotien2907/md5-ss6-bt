@@ -27,8 +27,8 @@ public class Orders {
     private String address;
     private int status;
 
-    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
-    private List<OrderDetail> orderDetails = new ArrayList<>();
+//    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
+//    private List<OrderDetail> orderDetails = new ArrayList<>();
 
 
 }

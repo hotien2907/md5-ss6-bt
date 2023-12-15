@@ -1,5 +1,6 @@
 package com.ra.controller;
 
+import com.ra.dto.requestDto.RequestOrderDetail;
 import com.ra.dto.responseDto.ResponseOrderDetail;
 import com.ra.entity.OrderDetail;
 import com.ra.exception.CustomException;
@@ -22,5 +23,9 @@ public class OrderDetailController  {
     @GetMapping("/{idOrder}")
     public ResponseEntity<List<ResponseOrderDetail>> findAllByOrderId(@PathVariable Integer idOrder) throws CustomException {
         return new ResponseEntity<>(orderDetailService.findAllByOrderId(idOrder), HttpStatus.OK);
+    }
+    @PostMapping("/{idOrder}")
+    public ResponseEntity<OrderDetail> createOrderDetail(@PathVariable Integer idOrder, @RequestBody RequestOrderDetail requestOrderDetail) throws CustomException {
+        return new ResponseEntity<>(orderDetailService.saveOrderDetailById(idOrder,requestOrderDetail), HttpStatus.CREATED);
     }
 }

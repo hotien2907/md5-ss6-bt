@@ -1,6 +1,9 @@
 package com.ra.service;
+import com.ra.dto.requestDto.RequestOrderDetail;
 import com.ra.dto.responseDto.ResponseOrderDetail;
 import com.ra.entity.OrderDetail;
+import com.ra.entity.Orders;
+import com.ra.entity.Product;
 import com.ra.exception.CustomException;
 import com.ra.repository.IOrderDetailRepository;
 import com.ra.repository.IOrderRepository;
@@ -19,6 +22,23 @@ public class OrderDetailServiceImpl implements IOrderDetailService {
     IOrderRepository orderRepository;
     @Autowired
     IProductRepository productRepository;
+
+    @Override
+    public OrderDetail saveOrderDetailById(Integer idOrder, RequestOrderDetail requestOrderDetail) throws CustomException {
+        Orders orders = orderRepository.findById(idOrder).get() ;
+        if (orders != null ) {
+            Product product = productRepository.findById(requestOrderDetail.getProduct_id()).get();
+            OrderDetail orderDetail = OrderDetail.builder()
+                    .orders(orders)
+                    .product(product)
+                    .price(requestOrderDetail.getPrice())
+                    .quantity(requestOrderDetail.getQuantity())
+                    .build();
+            return orderDetailRepository.save(orderDetail) ;
+        }
+        throw new CustomException("Khong ton tai gio hang cua nguoi dung");
+    }
+
     @Override
     public List<ResponseOrderDetail> findAllByOrderId(Integer orderId) throws CustomException {
         List<OrderDetail> orderDetails = orderDetailRepository.findOrderDetailByOrderId(orderId);
@@ -36,4 +56,6 @@ public class OrderDetailServiceImpl implements IOrderDetailService {
         }
         throw new CustomException("Khong ton don hang chi tiet");
     }
+
+
 }

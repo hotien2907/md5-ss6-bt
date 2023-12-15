@@ -23,9 +23,9 @@ public class Product {
     private Boolean status;
 
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    @Transient
-    private List<OrderDetail> orderDetails = new ArrayList<>();
+//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+//    @Transient
+//    private List<OrderDetail> orderDetails = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "category_id")
