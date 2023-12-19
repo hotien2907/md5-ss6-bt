@@ -14,8 +14,8 @@ import java.util.List;
 @Entity
 public class User {@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int user_id;
-    private String user_name;
-    private  String full_name;
+    private String userName;
+    private  String fullName;
     private String email;
     private String password;
     private String phone;

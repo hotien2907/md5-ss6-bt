@@ -49,7 +49,7 @@ public class OrderDetailServiceImpl implements IOrderDetailService {
                             .quantity(orderDetail.getQuantity())
                             .price(orderDetail.getPrice())
                             .order_id(orderDetail.getOrders().getOrder_id())
-                            .userName(orderDetail.getOrders().getUser().getUser_name())
+                            .userName(orderDetail.getOrders().getUser().getUserName())
                             .product(orderDetail.getProduct())
                             .build())
                             .collect(Collectors.toList());

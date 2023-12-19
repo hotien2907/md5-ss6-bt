@@ -12,9 +12,9 @@ import java.time.LocalDate;
 @Setter
 @Builder
 public class RequestOrder {
-    @NotNull(message = "Not Null")
-    private String recipient_name;
-    private String none;
+//    @NotNull(message = "Not Null")
+//    private String recipient_name;
+    private String note;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate create_date;
     @Pattern(regexp = "^0\\d{9,10}$" , message = "Phone ko dung dinh dang")

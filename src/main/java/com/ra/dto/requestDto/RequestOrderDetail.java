@@ -1,6 +1,5 @@
 package com.ra.dto.requestDto;
 import lombok.*;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

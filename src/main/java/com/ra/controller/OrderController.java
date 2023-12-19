@@ -21,7 +21,6 @@ public class OrderController {
     public ResponseEntity<Orders> addNewOrderToUserByIdUser(@PathVariable Integer idUser, @RequestBody ResponseOrder responseOrder) throws CustomException {
            return  new ResponseEntity<>(orderService.save(idUser,responseOrder), HttpStatus.CREATED);
     }
-
     @GetMapping
     public ResponseEntity<List<ResponseOrder>> getAllOrders() {
         return new ResponseEntity<>(orderService.findAll(), HttpStatus.OK);

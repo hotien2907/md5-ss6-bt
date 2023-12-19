@@ -23,7 +23,7 @@ public class OrderServiceImpl implements IOrderService {
     @Override
     public List<ResponseOrder> findAll() {
         List<ResponseOrder> list = orderRepository.findAll().stream().map(item -> ResponseOrder.builder()
-                        .recipient_name(item.getUser().getUser_name())
+                        .recipient_name(item.getUser().getUserName())
                         .note(item.getNote())
                         .status(item.getStatus())
                         .create_date(item.getCreate_date())
@@ -44,7 +44,7 @@ public class OrderServiceImpl implements IOrderService {
             User user = optionalUsers.get();
             Orders orders = Orders.builder().user(user)
                     .note(requestOrder.getNote())
-                    .recipient_name(user.getUser_name())
+                    .recipient_name(user.getUserName())
                     .create_date(requestOrder.getCreate_date())
                     .phone(requestOrder.getPhone())
                     .address(requestOrder.getAddress())

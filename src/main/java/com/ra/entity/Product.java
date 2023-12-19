@@ -15,7 +15,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int product_id;
-    private String product_name;
+    private String productName;
     private String description;
     private Double price;
     private String image;
@@ -23,9 +23,8 @@ public class Product {
     private Boolean status;
 
 
-//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-//    @Transient
-//    private List<OrderDetail> orderDetails = new ArrayList<>();
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<OrderDetail> orderDetails = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "category_id")
